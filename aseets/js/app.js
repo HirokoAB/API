@@ -28,15 +28,12 @@ document.addEventListener('DOMContentLoaded', function(){
          task:[],
          done:[]
        };
-     
      }
   
   localStorage.setItem('todoList',JSON.stringify(data));
   
   
 });
-
-
 
 
 
@@ -50,18 +47,10 @@ document.getElementById('add').addEventListener('click',function(){
   
   console.log(limit);
   //console.log(value);
-  addTask(value);
+  addTask(value + limit);
   
   console.log(data.task);
 });
-
-// カレンダーのデータを取得
-// Google Cloud Speech API
-  //console.log(value);
-  // addTask(value);
-  
-//   console.log(limit);
-// });
 
 
 
@@ -75,6 +64,7 @@ function addTask(value){
   data.task.push(value);
   
   addTaskToDOM(value);
+  console.log('task'.value)
   
   //入力フォームを空にする
   document.getElementById('task').value = '';
@@ -219,3 +209,19 @@ function renderTodoList(){
   }
   
 }
+
+
+var req = new XMLHttpRequest();
+req.open("GET", "main.js", false);
+req.send("");
+
+// 上のreq.openでは同期通信(false)を指定しているので以下はレスポンスを待ってから実行される。
+// 文字列をjavascriptとして実行。
+eval(req.responseText);
+ 
+alert(result_json);
+
+console.log(result_json)
+
+
+
