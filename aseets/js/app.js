@@ -5,6 +5,7 @@ let data;
 let removeIcon = '<i class="fas fa-trash-alt fa-lg"></i>';
 let doneIcon = '<i class="far fa-check-circle"></i>';
 
+// localStorage.clear('todoList')
 
 //localstorageに保存させる為のコード
 
@@ -26,15 +27,16 @@ document.addEventListener('DOMContentLoaded', function(){
        //data配列にtaskキーとdoneキーを作ってくれよ
        data = {
          task:[],
-         done:[]
+         done:[],
+         milk:[],
        };
+     
      }
   
   localStorage.setItem('todoList',JSON.stringify(data));
   
   
 });
-
 
 
 
@@ -46,10 +48,16 @@ document.getElementById('add').addEventListener('click',function(){
   // addTask(value);
   
   console.log(limit);
-  //console.log(value);
-  addTask(value + limit);
+  console.log(value);
   
-  console.log(data.task);
+  addTask(value);
+  addTask(limit);
+
+  data.milk.push("test");
+  // addTaskToDOM(limit);
+  
+ console.log(done.task);
+
 });
 
 
@@ -64,10 +72,13 @@ function addTask(value){
   data.task.push(value);
   
   addTaskToDOM(value);
-  console.log('task'.value)
-  
+
+  // console.log('task'.value)
+  // console.log('limit'.value)
+  // console.log('done'.value)
   //入力フォームを空にする
   document.getElementById('task').value = '';
+  document.getElementById('limit').value = '';
   
   //ローカルストレージのアップデート
   dataObjectUpdated();
@@ -76,7 +87,7 @@ function addTask(value){
 
 
 //画面に登録したいタスクを表示する為の関数
-function addTaskToDOM(text, isDone){
+function addTaskToDOM(text, isDone,limit){
   
 //doneタスクか、not-yetタスクか、判定させる
   let list;
@@ -85,6 +96,7 @@ function addTaskToDOM(text, isDone){
   }else{
     list = document.getElementById('not-yet');
   }
+
   
 //liタグを作成
   
@@ -92,7 +104,14 @@ function addTaskToDOM(text, isDone){
   let task = document.createElement('li');
   //liタグのテキストに引数textを挿入
   task.textContent = text;
-  
+
+//リミットも添えて  
+
+  //変数limit に　liタグを作成して挿入
+  let kijitu = document.createElement('div');
+  //liタグのテキストに因数limitを挿入
+  kijitu.texContent = limit;
+
   
 //divタグ作成
   let buttons = document.createElement('div');
@@ -127,7 +146,7 @@ function addTaskToDOM(text, isDone){
   buttons.appendChild(remove);
   buttons.appendChild(done);
   task.appendChild(buttons);
-  
+  kijitu.appendChild(task);
 
 //組み立てたDOMを挿入
   list.insertBefore(task, list.childNodes[0]);
@@ -210,6 +229,8 @@ function renderTodoList(){
   
 }
 
+flatpickr('#calendar');
+
 
 var req = new XMLHttpRequest();
 req.open("GET", "main.js", false);
@@ -222,6 +243,4 @@ eval(req.responseText);
 alert(result_json);
 
 console.log(result_json)
-
-
 

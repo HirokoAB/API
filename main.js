@@ -19,15 +19,17 @@ function startUserMedia(stream) {
 
 
 
-//國吉さん以下で動作確認できました
+// 國吉さん以下で動作確認できました
 $(function () {
-        $("#rec").click(function(){
-        $(this).toggleClass("active");
-        let act = $(this).hasClass("active");
-        if(act == true){
+    $(window).keypress(function(e) {
+    if( event.which === 13 ){
+    $('#add').toggleClass("active");
+    let act = $('#add').hasClass("active");
+    if(act == true){
             startRecording();
             }else{
             endRecording();
+    }
             }
         });
     });
@@ -45,6 +47,10 @@ $(function () {
 //   });
  
 // });
+
+
+
+
 
 let startRecording = function () {
     recorder && recorder.record();

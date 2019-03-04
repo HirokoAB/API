@@ -7,7 +7,6 @@ header{
     display:flex;
     justify-content: space-around;
     padding: 7px;
-    background: #69b7ce;
 }
 
 header input{
@@ -62,7 +61,7 @@ header i:hover{
     background-color:#fff; 
 
     position:relative;
-    margin-bottom: 150px;
+    margin-bottom: 20px;
     padding:14px 100px 14px 14px;
     height: 50px;
 }
@@ -101,21 +100,21 @@ header i:hover{
 }
 
 .list .remove{
-    color: #f00;
+    color: #ddd;
 }
 
 .list .done{
-    color: blue;
+    color: #ddd;
 }
 
 /*完了済み一覧*/
-#not-yet:empty:after{
+/*#not-yet:empty:after{
     content:'you have nothing to do!';
 }
 
 #done:empty:after{
     content:'you have yet to complete any tasks!';
-}
+}*/
 
 ul.list#not-yet:after,
 ul.list#done:after{
@@ -126,5 +125,15 @@ ul.list#done:after{
 }
 
 
+
+/*予定箱のCSS*/
+    .datepicker-days th.dow:first-child,
+    .datepicker-days td:first-child {
+        color: #f00;
+    }
+    .datepicker-days th.dow:last-child,
+    .datepicker-days td:last-child {
+        color: #00f;
+    }
 
 
